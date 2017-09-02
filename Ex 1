@@ -1,0 +1,20 @@
+install.packages("data.table")
+install.packages("datasets")
+testDF <- women   #Copying the data frame women into another dataset so that the original fields are not afected
+View(testDF)
+
+id <- 0
+for(i in 1:nrow(testDF))
+{
+  if
+  (testDF$height[i]>65.0 & testDF$weight[i]<136.7)
+  {
+  id<- id+1
+ }
+} 
+print("Number of women satisfying the criteria are")
+print(id)
+
+#Rough Space
+testDF$height
+nrow(testDF)
