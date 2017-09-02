@@ -1,0 +1,28 @@
+library(rvest)
+theurl <- "https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
+file<-read_html(theurl)
+tables<-html_nodes(file, "table")
+table1 <- html_table(tables[3], fill = TRUE)
+View(table1)
+table2 <- as.data.frame(table1)
+View(table2)
+matchesWon=0  #Initiating the tracking counter
+for(i in 1:nrow(table2))
+{
+  matchesWon <- matchesWon+table2$India[i]
+}
+print(paste('Total no of ODIs won by India are'))
+print(matchesWon)
+
+          
+                          #ALTERNATE WAY TO DO THE SAME PROBLEM
+
+
+install.packages("rvest")
+input_wiki <- read.csv(file="C:\\YYYYYY\\AMMA 2017\\Data\\Wiki_Matches.csv") #We first save the table as a csv file and then import it
+matchesWon=0  #Initiating the tracking counter
+for(i in 1:nrow(input_wiki))
+{
+  matchesWon <- matchesWon+input_wiki$India[i]
+}
+print(paste('Total no of ODIs won by India are', matchesWon))
