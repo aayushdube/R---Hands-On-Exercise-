@@ -1,0 +1,26 @@
+install.packages("rvest")
+library(rvest)
+getwd()
+setwd("D:\\MICA\\AMMA\\data_2017")
+
+theurl <- "https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
+file<-read_html(theurl)
+tables<-html_nodes(file, "table")
+table1 <- html_table(tables[7], fill = TRUE)
+View(table1)
+DF1 <- as.data.frame(table1)
+View(DF1)
+DF1$Tests
+top5 <- DF1[rev(order(DF1$Tests)),"Top 5 highest number of test wins"][1:5]
+View(top5)
+#Visualising the data using a plot
+
+install.packages("psych")
+library(psych)
+library(help=psych)
+
+# histogram
+hist(Age)
+?hist 
+hist(Age, breaks=50)
+matchesWon=0  #Initiating the tracking counter
